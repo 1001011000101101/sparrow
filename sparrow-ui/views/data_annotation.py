@@ -171,7 +171,7 @@ class DataAnnotation:
                 saved_state['meta']['version'] = "v0.1"
 
             with open(model.rects_file, "w") as f:
-                json.dump(saved_state, f, indent=2)
+                json.dump(saved_state, f, indent=2, ensure_ascii=False)
             st.session_state[model.rects_file] = saved_state
 
         assign_labels = st.checkbox(model.assign_labels_text, True, help=model.assign_labels_help)
@@ -254,7 +254,7 @@ class DataAnnotation:
                                     return
 
                             with open(model.rects_file, "w") as f:
-                                json.dump(result_rects.rects_data, f, indent=2)
+                                json.dump(result_rects.rects_data, f, indent=2, ensure_ascii=False)
                             st.session_state[model.rects_file] = result_rects.rects_data
                             # st.write(model.saved_text)
                             st.experimental_rerun()
@@ -383,7 +383,7 @@ class DataAnnotation:
 
             file_name = uploaded_file.name.split(".")[0]
             with open(os.path.join("docs/json/", file_name + ".json"), "w") as f:
-                json.dump(annotations_json, f, indent=2)
+                json.dump(annotations_json, f, indent=2, ensure_ascii=False)
 
             st.success("File uploaded successfully")
 
@@ -476,7 +476,7 @@ class DataAnnotation:
                         result_rects.rects_data['words'] = words
 
                         with open(model.rects_file, "w") as f:
-                            json.dump(result_rects.rects_data, f, indent=2)
+                            json.dump(result_rects.rects_data, f, indent=2, ensure_ascii=False)
                         st.session_state[model.rects_file] = result_rects.rects_data
                         st.experimental_rerun()
 
@@ -607,7 +607,7 @@ class DataAnnotation:
                         result_rects.rects_data['words'] = words
 
                         with open(model.rects_file, "w") as f:
-                            json.dump(result_rects.rects_data, f, indent=2)
+                            json.dump(result_rects.rects_data, f, indent=2, ensure_ascii=False)
                         st.session_state[model.rects_file] = result_rects.rects_data
                         st.experimental_rerun()
             elif str(self.action_event) == 'down':
@@ -630,7 +630,7 @@ class DataAnnotation:
                         result_rects.rects_data['words'] = words
 
                         with open(model.rects_file, "w") as f:
-                            json.dump(result_rects.rects_data, f, indent=2)
+                            json.dump(result_rects.rects_data, f, indent=2, ensure_ascii=False)
                         st.session_state[model.rects_file] = result_rects.rects_data
                         st.experimental_rerun()
             elif str(self.action_event) == 'save':
@@ -644,7 +644,7 @@ class DataAnnotation:
                 result_rects.rects_data['words'] = words
 
                 with open(model.rects_file, "w") as f:
-                    json.dump(result_rects.rects_data, f, indent=2)
+                    json.dump(result_rects.rects_data, f, indent=2, ensure_ascii=False)
                 st.session_state[model.rects_file] = result_rects.rects_data
                 st.experimental_rerun()
 
@@ -689,4 +689,4 @@ class DataAnnotation:
                     if keys != {}:
                         path = os.path.join(path_to, file)
                         with open(path, "w") as f:
-                            json.dump(keys, f, indent=2)
+                            json.dump(keys, f, indent=2, ensure_ascii=False)
